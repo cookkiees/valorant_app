@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_app/app/layout/responsive_layout.dart';
 
 import 'app/config/routers/app_router.dart';
 import 'app/config/themes/app_theme.dart';

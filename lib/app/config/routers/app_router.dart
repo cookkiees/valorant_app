@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:valorant_app/app/layout/responsive_layout.dart';
 
+import '../../modules/agent/presentation/pages/agent_screen.dart';
 import '../../modules/main/main_mobile_screen.dart';
 import '../../modules/main/main_web_screen.dart';
 import 'app_routes.dart';
@@ -47,7 +48,7 @@ mixin class AppRouter {
           GoRoute(
             name: AppRoutes.agent.name,
             path: AppRoutes.agent.path,
-            builder: (context, state) => const Center(child: Text('AGENT')),
+            builder: (context, state) => const AgentScreen(),
           ),
         ],
       ),

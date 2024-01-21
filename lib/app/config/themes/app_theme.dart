@@ -5,7 +5,7 @@ import 'app_page_transitions_theme.dart';
 mixin class AppTheme {
   static ThemeData defaults() {
     return ThemeData(
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: Colors.black87,
       pageTransitionsTheme: getPageTransitionsTheme,
       appBarTheme: const AppBarTheme(),
       elevatedButtonTheme: const ElevatedButtonThemeData(),

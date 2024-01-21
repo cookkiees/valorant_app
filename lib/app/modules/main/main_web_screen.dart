@@ -11,43 +11,38 @@ class MainWebScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
       body: FadeIn(
-        delay: const Duration(milliseconds: 250),
+        delay: const Duration(milliseconds: 650),
         child: CustomPaint(
           painter: AppBackgroundPainter(),
           child: Row(
             children: [
-              ColoredBox(
-                color: Colors.transparent,
-                child: Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    _buildLeftMenu(context),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Image.asset(
-                        'assets/logos/valorant-rounded.png',
-                        height: 50,
-                        width: 50,
-                      ),
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  _buildLeftMenu(context),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Image.asset(
+                      'assets/logos/valorant-rounded.png',
+                      height: 50,
+                      width: 50,
                     ),
+                  ),
+                ],
+              ),
+              VerticalDivider(
+                  width: 1, thickness: 0.5, color: Colors.grey[300]),
+              Expanded(
+                child: Column(
+                  children: [
+                    _buildTopMenu(context),
+                    Expanded(child: navigationShell),
                   ],
                 ),
               ),
-              const VerticalDivider(width: 1, thickness: 1, color: Colors.grey),
-              Expanded(
-                child: ColoredBox(
-                  color: Colors.transparent,
-                  child: Column(
-                    children: [
-                      _buildTopMenu(context),
-                      Expanded(child: navigationShell),
-                    ],
-                  ),
-                ),
-              ),
-              const VerticalDivider(width: 1, thickness: 1, color: Colors.grey),
+              VerticalDivider(
+                  width: 1, thickness: 0.5, color: Colors.grey[300]),
               Container(
                 height: double.infinity,
                 width: 60,
@@ -82,7 +77,7 @@ class MainWebScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: context.screenHeight * 0.025),
               child: FadeInDown(
                 from: 100 * e.index.toDouble(),
-                duration: const Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 600),
                 child: RotatedBox(
                   quarterTurns: 1,
                   child: InkWell(
@@ -117,35 +112,33 @@ class MainWebScreen extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.only(left: 30),
       child: Row(
-        children: BottomNavbarMenu.values
-            .map(
-              (e) => Flexible(
-                child: Padding(
-                  padding: EdgeInsets.only(right: context.screenWidth * 0.025),
-                  child: FadeInLeft(
-                    duration: const Duration(milliseconds: 300),
-                    from: 100 * e.index.toDouble(),
-                    child: InkWell(
-                      onTap: () => _onTap(e.index),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Text(
-                          e.name.toUpperCase(),
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: navigationShell.currentIndex == e.index
-                                ? Colors.white
-                                : Colors.grey,
-                            letterSpacing: 4,
-                          ),
-                        ),
+        children: BottomNavbarMenu.values.map((e) {
+          return Flexible(
+            child: Padding(
+              padding: EdgeInsets.only(right: context.screenWidth * 0.025),
+              child: FadeInLeft(
+                duration: const Duration(milliseconds: 600),
+                from: 100 * e.index.toDouble(),
+                child: InkWell(
+                  onTap: () => _onTap(e.index),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Text(
+                      e.name.toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: navigationShell.currentIndex == e.index
+                            ? Colors.white
+                            : Colors.grey,
+                        letterSpacing: 4,
                       ),
                     ),
                   ),
                 ),
               ),
-            )
-            .toList(),
+            ),
+          );
+        }).toList(),
       ),
     );
   }

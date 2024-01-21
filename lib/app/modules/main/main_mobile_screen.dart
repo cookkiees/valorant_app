@@ -4,8 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
 import 'dart:math' as math;
 
-import '../../common/utils/app_background_painter.dart';
-
 class MainMobileScreen extends StatefulWidget {
   const MainMobileScreen({required this.navigationShell, super.key});
   final StatefulNavigationShell navigationShell;
@@ -31,13 +29,8 @@ class _MainMobileScreenState extends State<MainMobileScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white10,
-      body: CustomPaint(
-        painter: AppBackgroundPainter(),
-        child: Container(
-          child: widget.navigationShell,
-        ),
-      ),
+      backgroundColor: Colors.white12,
+      body: widget.navigationShell,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Stack(
         alignment: Alignment.bottomCenter,
@@ -60,18 +53,30 @@ class _MainMobileScreenState extends State<MainMobileScreen>
                     _buildAnimatedCurvedText(
                       text: 'AGENT',
                       startAngle: -5 * math.pi / 7,
+                      color: widget.navigationShell.currentIndex == 0
+                          ? Colors.red
+                          : Colors.grey,
                     ),
                     _buildAnimatedCurvedText(
                       text: 'WEAPONS',
-                      startAngle: -3 * math.pi / 7.5,
+                      startAngle: -3 * math.pi / 8,
+                      color: widget.navigationShell.currentIndex == 1
+                          ? Colors.red
+                          : Colors.grey,
                     ),
                     _buildAnimatedCurvedText(
                       text: 'MAPS',
-                      startAngle: math.pi / 20,
+                      startAngle: math.pi / 10,
+                      color: widget.navigationShell.currentIndex == 2
+                          ? Colors.red
+                          : Colors.grey,
                     ),
                     _buildAnimatedCurvedText(
                       text: 'BUNDLES',
-                      startAngle: math.pi / 3,
+                      startAngle: math.pi / 2.5,
+                      color: widget.navigationShell.currentIndex == 3
+                          ? Colors.red
+                          : Colors.grey,
                     ),
                   ],
                 ),
@@ -169,18 +174,15 @@ class _MainMobileScreenState extends State<MainMobileScreen>
   }
 
   Widget _buildAnimatedCurvedText(
-      {required String text, required double startAngle}) {
+      {required String text, required double startAngle, Color? color}) {
     return CurvedText(
       radius: 56,
       text: text,
       startAngle: startAngle,
-      textStyle: const TextStyle(
-        fontSize: 14,
+      textStyle: TextStyle(
+        fontSize: 12,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
-        shadows: [
-          BoxShadow(),
-        ],
+        color: color,
       ),
     );
   }

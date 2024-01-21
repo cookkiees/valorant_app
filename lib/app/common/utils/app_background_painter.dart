@@ -8,7 +8,7 @@ class AppBackgroundPainter extends CustomPainter {
     const double dotRadius = 1.0;
     const double spacing = 50.0;
 
-    for (double x = 0; x < size.width; x += spacing) {
+    for (double x = 12; x < size.width; x += spacing) {
       for (double y = 0; y < size.height; y += spacing) {
         canvas.drawCircle(Offset(x, y), dotRadius, paint);
       }
