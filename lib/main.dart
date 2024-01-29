@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/config/routers/app_router.dart';
 import 'app/config/themes/app_theme.dart';
@@ -14,7 +15,7 @@ void main() async {
     // await AppLocalNotification.instance.requestNotification();
     // await AppFirebaseNotification.instance.initNotification();
     // await AppFirebaseNotification.instance.initPushNotification();
-    runApp(const MyApp());
+    runApp(const ProviderScope(child: MyApp()));
   } catch (e) {
     runApp(MyAppStartupErrorWidget(error: e));
   }
