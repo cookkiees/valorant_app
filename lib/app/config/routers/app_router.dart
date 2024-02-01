@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:valorant_app/app/layout/responsive_layout.dart';
+import 'package:valorant_app/app/modules/agent/pages/agent_screen.dart';
 
-import '../../modules/agent/presentation/pages/agent_screen.dart';
 import '../../modules/main/main_mobile_screen.dart';
 import '../../modules/main/main_web_screen.dart';
 import 'app_routes.dart';
