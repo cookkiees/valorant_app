@@ -6,11 +6,11 @@ part of 'agent_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$agentServiceHash() => r'34665a54e583aa7cf095e3e3f5c0eba61c979cd4';
+String _$agentServiceHash() => r'a98583f228eb5884e7d3547589db75fde1de5aa4';
 
 /// See also [agentService].
 @ProviderFor(agentService)
-final agentServiceProvider = AutoDisposeProvider<AgentService>.internal(
+final agentServiceProvider = AutoDisposeProvider<AgentsService>.internal(
   agentService,
   name: r'agentServiceProvider',
   debugGetCreateSourceHash:
@@ -19,7 +19,7 @@ final agentServiceProvider = AutoDisposeProvider<AgentService>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef AgentServiceRef = AutoDisposeProviderRef<AgentService>;
+typedef AgentServiceRef = AutoDisposeProviderRef<AgentsService>;
 String _$agentHash() => r'66bf8a46753ac6ab2ad09047aa5e5594c2d4ce58';
 
 /// See also [agent].

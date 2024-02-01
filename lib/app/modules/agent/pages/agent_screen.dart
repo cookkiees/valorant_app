@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
 import 'package:valorant_app/app/core/providers/agent/agent_provider.dart';
+import 'package:valorant_app/app/core/providers/weapons/weapons_provider.dart';
 
 class AgentScreen extends ConsumerWidget {
   const AgentScreen({super.key});
@@ -10,6 +11,7 @@ class AgentScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final agents = ref.watch(agentProvider);
+    final weapons = ref.watch(weaponsProvider);
 
     if (kIsWeb) {
       return const AgentDesktopWidget();
