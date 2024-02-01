@@ -11,6 +11,6 @@ AgentService agentService(AgentServiceRef ref) {
 }
 
 @riverpod
-Future<AgentBaseModels?> agent(AgentRef ref) async {
+Future<AgentBaseModels> agent(AgentRef ref) {
   return ref.read(agentServiceProvider).fetchAgents();
 }

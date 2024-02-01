@@ -19,12 +19,12 @@ class AgentScreen extends ConsumerWidget {
         body: agents.when(
           data: (models) {
             return ListView.builder(
-              itemCount: models?.data.length,
+              itemCount: models.data.length,
               itemBuilder: (context, index) {
-                var result = models?.data[index];
+                var result = models.data[index];
                 return ListTile(
                   title: Text(
-                    "${result?.displayName}",
+                    "${result.displayName}",
                     style: const TextStyle(color: Colors.white),
                   ),
                 );
