@@ -3,7 +3,7 @@ import 'package:valorant_app/app/core/models/agent/agent_base_models.dart';
 
 import '../../services/agents/agents_service.dart';
 
-part 'agent_provider.g.dart'; // Add this line
+part 'agent_provider.g.dart';
 
 @riverpod
 AgentsService agentService(AgentServiceRef ref) {

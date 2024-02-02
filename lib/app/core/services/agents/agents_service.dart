@@ -7,8 +7,9 @@ import '../../models/agent/agent_base_models.dart';
 
 class AgentsService {
   final String apiUrl = 'https://valorant-api.com/v1/agents';
+  http.Client client = http.Client();
   Future<AgentBaseModels> fetchAgents() async {
-    final response = await http.get(Uri.parse(apiUrl));
+    final response = await client.get(Uri.parse(apiUrl));
     if (response.statusCode == 200) {
       final jsonData = jsonDecode(response.body);
       final agents = AgentBaseModels.fromJson(jsonData);
