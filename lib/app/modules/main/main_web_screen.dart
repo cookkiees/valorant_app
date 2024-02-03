@@ -24,7 +24,7 @@ class _MainWebScreenState extends ConsumerState<MainWebScreen> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 8), (Timer timer) {
       ref.read(mapsProvider).whenData((maps) {
         setState(() {
           currentIndex = (currentIndex + 1) % maps.data!.length;
@@ -57,6 +57,10 @@ class _MainWebScreenState extends ConsumerState<MainWebScreen> {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       opacity: 0,
+                      colorFilter: const ColorFilter.mode(
+                        Colors.grey,
+                        BlendMode.saturation,
+                      ),
                       image: NetworkImage(maps.data![currentIndex].splash!),
                     ),
                   ),
