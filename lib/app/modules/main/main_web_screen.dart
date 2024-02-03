@@ -44,6 +44,7 @@ class _MainWebScreenState extends ConsumerState<MainWebScreen> {
     final maps = ref.watch(mapsProvider);
 
     return Scaffold(
+      backgroundColor: Colors.blueGrey.shade900,
       body: Stack(
         children: [
           maps.when(

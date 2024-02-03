@@ -76,8 +76,8 @@ class AgentPlayerWidget extends ConsumerWidget {
                           fit: BoxFit.cover,
                           colorFilter: selectedAgentId == index
                               ? null
-                              : const ColorFilter.mode(
-                                  Colors.white,
+                              : ColorFilter.mode(
+                                  Colors.blueGrey.shade900,
                                   BlendMode.color,
                                 ),
                           image: NetworkImage('${result.displayIcon}'),

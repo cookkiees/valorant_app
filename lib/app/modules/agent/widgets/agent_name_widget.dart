@@ -17,6 +17,7 @@ class AgentNameWidget extends ConsumerWidget {
     return agents.when(
       data: (models) {
         String displayName = models.data[selectedAgentId].displayName ?? '';
+
         return Text(
           displayName.toUpperCase(),
           style: getTextStyle(context),

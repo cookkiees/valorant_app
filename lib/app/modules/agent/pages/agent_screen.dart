@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
-import 'package:valorant_app/app/core/providers/maps/maps_provider.dart';
 import 'package:valorant_app/app/modules/agent/widgets/agent_backgound_widget.dart';
 
 import '../widgets/agent_abilities_widget.dart';
@@ -22,9 +20,9 @@ class AgentScreen extends ConsumerWidget {
       case true:
         return const AgentDesktopWidget();
       case false:
-        return const Scaffold(
-          backgroundColor: Colors.black12,
-          body: SafeArea(
+        return Scaffold(
+          backgroundColor: Colors.blueGrey.shade900,
+          body: const SafeArea(
             top: false,
             bottom: false,
             child: Stack(
@@ -88,7 +86,7 @@ class AgentDesktopWidget extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 210,
+                                height: 280,
                                 width: double.infinity,
                                 alignment: Alignment.centerLeft,
                                 padding: EdgeInsets.symmetric(
