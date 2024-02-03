@@ -18,7 +18,8 @@ class AgentPlayerWidget extends ConsumerWidget {
     final selectedAgentId = ref.watch(selectedAgentIdProvider);
 
     return Container(
-      height: getHeight,
+      height: type == AgentPlayerPlatformType.mobile ? getHeight : null,
+      width: type == AgentPlayerPlatformType.web ? getWidth : null,
       margin: getMargin,
       child: agents.when(
         data: (models) {
@@ -71,15 +72,15 @@ class AgentPlayerWidget extends ConsumerWidget {
                               )
                             : null,
                         image: DecorationImage(
-                          fit: BoxFit.cover,
                           opacity: 1,
+                          fit: BoxFit.cover,
                           colorFilter: selectedAgentId == index
                               ? null
                               : const ColorFilter.mode(
                                   Colors.white,
                                   BlendMode.color,
                                 ),
-                          image: NetworkImage('${result.killfeedPortrait}'),
+                          image: NetworkImage('${result.displayIcon}'),
                         ),
                       ),
                     ),
@@ -126,7 +127,7 @@ class AgentPlayerWidget extends ConsumerWidget {
       case AgentPlayerPlatformType.mobile:
         return const EdgeInsets.only(bottom: 100);
       case AgentPlayerPlatformType.web:
-        return EdgeInsets.zero;
+        return const EdgeInsets.only(left: 16);
       default:
         return EdgeInsets.zero;
     }
@@ -137,7 +138,7 @@ class AgentPlayerWidget extends ConsumerWidget {
       case AgentPlayerPlatformType.mobile:
         return const EdgeInsets.only(right: 16);
       case AgentPlayerPlatformType.web:
-        return EdgeInsets.zero;
+        return const EdgeInsets.only(bottom: 20);
       default:
         return EdgeInsets.zero;
     }

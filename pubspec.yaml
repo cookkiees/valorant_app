@@ -49,6 +49,7 @@ dependencies:
   fpdart: ^1.1.0
   riverpod: ^2.4.9
   mockito: ^5.4.4
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:

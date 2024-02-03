@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
-import 'package:valorant_app/app/core/providers/agent/agent_provider.dart';
-import 'package:valorant_app/app/core/providers/state/selected_agent_id_provider.dart';
 
+import '../widgets/agent_abilities_widget.dart';
+import '../widgets/agent_name_widget.dart';
 import '../widgets/agent_player_widget.dart';
 
 class AgentScreen extends ConsumerWidget {
@@ -12,20 +12,34 @@ class AgentScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // final agents = ref.watch(agentProvider);
+    // final selectedAgentId = ref.watch(selectedAgentIdProvider);
     switch (kIsWeb) {
       case true:
         return const AgentDesktopWidget();
       case false:
-        return const Scaffold(
+        return Scaffold(
           backgroundColor: Colors.black12,
           body: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AgentNameWidget(),
-                Spacer(),
-                AgentPlayerWidget(
+                24.height,
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: AgentNameWidget(
+                    type: AgentNamePlatformType.mobile,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: AgentAbilitiesWidget(
+                    type: AgentAbilitiesPlatformType.mobile,
+                  ),
+                ),
+                const Spacer(),
+                const AgentPlayerWidget(
                   type: AgentPlayerPlatformType.mobile,
                 ),
               ],
@@ -38,46 +52,8 @@ class AgentScreen extends ConsumerWidget {
   }
 }
 
-class AgentNameWidget extends ConsumerWidget {
-  const AgentNameWidget({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final agents = ref.watch(agentProvider);
-    final selectedAgentId = ref.watch(selectedAgentIdProvider);
-    return agents.when(
-      data: (models) {
-        var result = models.data[selectedAgentId];
-        int colorValue = int.tryParse(
-                '0x${result.backgroundGradientColors?[0] ?? 'FF0000'}') ??
-            0xFF0000;
-        return Text(
-          selectedAgentId < models.data.length
-              ? models.data[selectedAgentId].displayName
-                  .toString()
-                  .toUpperCase()
-              : '',
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Color(colorValue),
-          ),
-        );
-      },
-      error: (error, stackTrace) {
-        return Text(error.toString());
-      },
-      loading: () {
-        return const CircularProgressIndicator.adaptive();
-      },
-    );
-  }
-}
-
 class AgentDesktopWidget extends ConsumerWidget {
-  const AgentDesktopWidget({
-    super.key,
-  });
+  const AgentDesktopWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -149,33 +125,24 @@ class AgentDesktopWidget extends ConsumerWidget {
                                     ),
                                   ),
                                 ),
-                                child: Text.rich(
-                                  TextSpan(
-                                    text: 'KILL',
-                                    style: TextStyle(
-                                      color: Colors.yellow,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: context.screenWidth * 0.05,
-                                    ),
-                                    children: const [
-                                      TextSpan(
-                                        text: 'JOY',
-                                        style: TextStyle(color: Colors.purple),
-                                      )
-                                    ],
-                                  ),
+                                child: const AgentNameWidget(
+                                  type: AgentNamePlatformType.web,
                                 ),
                               ),
                               Container(
                                 height: 220,
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: context.screenWidth * 0.03),
+                                  horizontal: context.screenWidth * 0.03,
+                                ),
                                 decoration: const BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
                                       color: Colors.white38,
                                     ),
                                   ),
+                                ),
+                                child: const AgentAbilitiesWidget(
+                                  type: AgentAbilitiesPlatformType.web,
                                 ),
                               ),
                               Flexible(
