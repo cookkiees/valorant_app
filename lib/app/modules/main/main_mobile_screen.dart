@@ -30,7 +30,10 @@ class _MainMobileScreenState extends State<MainMobileScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white12,
-      body: widget.navigationShell,
+      body: Opacity(
+        opacity: isShowMenu ? 0.2 : 1,
+        child: widget.navigationShell,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Stack(
         alignment: Alignment.bottomCenter,

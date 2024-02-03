@@ -3,53 +3,84 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
 import 'package:valorant_app/app/core/providers/agent/agent_provider.dart';
+import 'package:valorant_app/app/core/providers/state/selected_agent_id_provider.dart';
+
+import '../widgets/agent_player_widget.dart';
 
 class AgentScreen extends ConsumerWidget {
   const AgentScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final agents = ref.watch(agentProvider);
-
-    if (kIsWeb) {
-      return const AgentDesktopWidget();
-    } else {
-      return Scaffold(
-        backgroundColor: Colors.black12,
-        body: agents.when(
-          data: (models) {
-            return ListView.builder(
-              itemCount: models.data.length,
-              itemBuilder: (context, index) {
-                var result = models.data[index];
-                return ListTile(
-                  title: Text(
-                    "${result.displayName}",
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                );
-              },
-            );
-          },
-          error: (error, stackTrace) {
-            return const Text("text");
-          },
-          loading: () {
-            return const CircularProgressIndicator.adaptive();
-          },
-        ),
-      );
+    switch (kIsWeb) {
+      case true:
+        return const AgentDesktopWidget();
+      case false:
+        return const Scaffold(
+          backgroundColor: Colors.black12,
+          body: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AgentNameWidget(),
+                Spacer(),
+                AgentPlayerWidget(
+                  type: AgentPlayerPlatformType.mobile,
+                ),
+              ],
+            ),
+          ),
+        );
+      default:
+        return const SizedBox.shrink();
     }
   }
 }
 
-class AgentDesktopWidget extends StatelessWidget {
+class AgentNameWidget extends ConsumerWidget {
+  const AgentNameWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final agents = ref.watch(agentProvider);
+    final selectedAgentId = ref.watch(selectedAgentIdProvider);
+    return agents.when(
+      data: (models) {
+        var result = models.data[selectedAgentId];
+        int colorValue = int.tryParse(
+                '0x${result.backgroundGradientColors?[0] ?? 'FF0000'}') ??
+            0xFF0000;
+        return Text(
+          selectedAgentId < models.data.length
+              ? models.data[selectedAgentId].displayName
+                  .toString()
+                  .toUpperCase()
+              : '',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Color(colorValue),
+          ),
+        );
+      },
+      error: (error, stackTrace) {
+        return Text(error.toString());
+      },
+      loading: () {
+        return const CircularProgressIndicator.adaptive();
+      },
+    );
+  }
+}
+
+class AgentDesktopWidget extends ConsumerWidget {
   const AgentDesktopWidget({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: Row(
         children: [
@@ -89,25 +120,8 @@ class AgentDesktopWidget extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: 200,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.only(left: 10),
-                          physics: const ScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              height: 200,
-                              width: 200,
-                              margin: const EdgeInsets.only(bottom: 20),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
+                      const AgentPlayerWidget(
+                        type: AgentPlayerPlatformType.web,
                       ),
                       10.width,
                       Flexible(
