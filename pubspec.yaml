@@ -40,7 +40,7 @@ dependencies:
   http: ^1.2.0
   shared_preferences: ^2.2.2
   flutter_svg: ^2.0.9
-  animate_do: ^3.1.2
+  animate_do: ^3.3.3
   riverpod_annotation: ^2.3.3
   flutter_riverpod: ^2.4.9
   flutter_bloc: ^8.1.3

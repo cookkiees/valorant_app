@@ -125,9 +125,9 @@ class AgentPlayerWidget extends ConsumerWidget {
   EdgeInsetsGeometry get getMargin {
     switch (type) {
       case AgentPlayerPlatformType.mobile:
-        return const EdgeInsets.only(bottom: 100);
+        return const EdgeInsets.only(bottom: kBottomNavigationBarHeight + 20);
       case AgentPlayerPlatformType.web:
-        return const EdgeInsets.only(left: 16);
+        return const EdgeInsets.only(left: 16, top: 60);
       default:
         return EdgeInsets.zero;
     }

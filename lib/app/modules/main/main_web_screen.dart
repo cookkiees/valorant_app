@@ -34,11 +34,13 @@ class MainWebScreen extends StatelessWidget {
               VerticalDivider(
                   width: 1, thickness: 0.5, color: Colors.grey[300]),
               Expanded(
-                child: Column(
-                  children: [
-                    _buildTopMenu(context),
-                    Expanded(child: navigationShell),
-                  ],
+                child: SizedBox(
+                  child: Stack(
+                    children: [
+                      _buildTopMenu(context),
+                      navigationShell,
+                    ],
+                  ),
                 ),
               ),
               VerticalDivider(
@@ -110,6 +112,7 @@ class MainWebScreen extends StatelessWidget {
     return Container(
       height: 60,
       width: double.infinity,
+      color: Colors.transparent,
       padding: const EdgeInsets.only(left: 30),
       child: Row(
         children: BottomNavbarMenu.values.map((e) {

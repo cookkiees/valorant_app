@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppBackgroundPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = Colors.grey;
+    final paint = Paint()..color = Colors.white24;
 
     const double dotRadius = 1.0;
     const double spacing = 50.0;

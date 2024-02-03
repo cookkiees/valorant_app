@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
 
 import '../../../core/providers/agent/agent_provider.dart';
 import '../../../core/providers/state/selected_agent_id_provider.dart';
 
-class AgentNameWidget extends ConsumerWidget {
-  const AgentNameWidget({super.key, this.type = AgentNamePlatformType.mobile});
+class AgentBiographyWidget extends ConsumerWidget {
+  const AgentBiographyWidget(
+      {super.key, this.type = AgentBiographyPlatformType.mobile});
 
-  final AgentNamePlatformType type;
+  final AgentBiographyPlatformType type;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final agents = ref.watch(agentProvider);
     final selectedAgentId = ref.watch(selectedAgentIdProvider);
     return agents.when(
       data: (models) {
-        String displayName = models.data[selectedAgentId].displayName ?? '';
+        String description = models.data[selectedAgentId].description ?? '';
         return Text(
-          displayName.toUpperCase(),
+          description,
           style: getTextStyle(context),
         );
       },
@@ -33,17 +33,16 @@ class AgentNameWidget extends ConsumerWidget {
 
   TextStyle getTextStyle(BuildContext context) {
     switch (type) {
-      case AgentNamePlatformType.mobile:
+      case AgentBiographyPlatformType.mobile:
         return GoogleFonts.zillaSlab(
           fontSize: 24,
           fontWeight: FontWeight.bold,
           color: Colors.white10,
         );
-      case AgentNamePlatformType.web:
-        return TextStyle(
-          fontSize: context.screenWidth * 0.04,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+      case AgentBiographyPlatformType.web:
+        return const TextStyle(
+          fontSize: 14,
+          color: Colors.white54,
         );
       default:
         return const TextStyle();
@@ -51,7 +50,7 @@ class AgentNameWidget extends ConsumerWidget {
   }
 }
 
-enum AgentNamePlatformType {
+enum AgentBiographyPlatformType {
   web,
   mobile,
 }
