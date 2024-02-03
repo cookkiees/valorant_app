@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers/agent/agent_provider.dart';
-import '../../../core/providers/state/selected_agent_id_provider.dart';
+import '../../../core/providers/state/state_provider.dart';
 
 class AgentBackgroundWidget extends ConsumerWidget {
   const AgentBackgroundWidget({
@@ -18,19 +18,26 @@ class AgentBackgroundWidget extends ConsumerWidget {
     return agents.when(
       data: (models) {
         var result = models.data[selectedAgentId];
-
-        return Container(
-          padding: getPadding,
-          margin: getMargin,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            image: result.background != null
-                ? DecorationImage(
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(getColor, BlendMode.srcIn),
-                    image: NetworkImage(result.background!),
-                  )
-                : null,
+        int colorValue = int.tryParse(
+                '0x${result.backgroundGradientColors?[0] ?? 'FF0000'}') ??
+            0xFF0000;
+        return Opacity(
+          opacity: 0.3,
+          child: Container(
+            padding: getPadding,
+            margin: getMargin,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: result.background != null
+                  ? DecorationImage(
+                      fit: BoxFit.cover,
+                      opacity: 0.1,
+                      colorFilter:
+                          ColorFilter.mode(Color(colorValue), BlendMode.srcIn),
+                      image: NetworkImage(result.background!),
+                    )
+                  : null,
+            ),
           ),
         );
       },

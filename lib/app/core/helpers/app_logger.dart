@@ -33,7 +33,7 @@ class AppLogger {
     AppLogger.logDebug('Request: ${response.request}');
     AppLogger.logDebug('Status: ${response.statusCode}');
     AppLogger.logDebug('Headers: ${response.headers.values}');
-    AppLogger.logDebug('Response Body: ${response.body}');
+    // AppLogger.logDebug('Response Body: ${response.body}');
     AppLogger.logDebug('--------------------------------------------------');
   }
 }

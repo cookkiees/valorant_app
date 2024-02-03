@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers/agent/agent_provider.dart';
-import '../../../core/providers/state/selected_agent_id_provider.dart';
+import '../../../core/providers/state/state_provider.dart';
 
 class AgentPlayerWidget extends ConsumerWidget {
   const AgentPlayerWidget({

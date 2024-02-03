@@ -1,12 +1,11 @@
-import 'package:animate_do/animate_do.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
+import 'package:valorant_app/app/core/providers/maps/maps_provider.dart';
 import 'package:valorant_app/app/modules/agent/widgets/agent_backgound_widget.dart';
 
-import '../../../core/providers/agent/agent_provider.dart';
-import '../../../core/providers/state/selected_agent_id_provider.dart';
 import '../widgets/agent_abilities_widget.dart';
 import '../widgets/agent_biography_widget.dart';
 import '../widgets/agent_full_potrait_widget.dart';
@@ -19,8 +18,6 @@ class AgentScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final agents = ref.watch(agentProvider);
-    final selectedAgentId = ref.watch(selectedAgentIdProvider);
     switch (kIsWeb) {
       case true:
         return const AgentDesktopWidget();

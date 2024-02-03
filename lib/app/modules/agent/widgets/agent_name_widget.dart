@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:valorant_app/app/common/extensions/app_size_extension.dart';
 
 import '../../../core/providers/agent/agent_provider.dart';
-import '../../../core/providers/state/selected_agent_id_provider.dart';
+import '../../../core/providers/state/state_provider.dart';
 
 class AgentNameWidget extends ConsumerWidget {
   const AgentNameWidget({super.key, this.type = AgentNamePlatformType.mobile});
