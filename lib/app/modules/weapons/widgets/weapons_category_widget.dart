@@ -44,7 +44,7 @@ class WeaponsCategoryWidget extends ConsumerWidget {
         return const TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.bold,
-          color: Colors.blueGrey,
+          color: Colors.white54,
         );
       default:
         return const TextStyle();

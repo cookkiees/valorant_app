@@ -128,8 +128,9 @@ class AgentDesktopWidget extends ConsumerWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        '// ROLE',
+                                        'ROLE',
                                         style: TextStyle(
+                                          fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -153,8 +154,9 @@ class AgentDesktopWidget extends ConsumerWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        '// BIORAPHY',
+                                        'BIOGRAPHY',
                                         style: TextStyle(
+                                          fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                         ),
                                       ),

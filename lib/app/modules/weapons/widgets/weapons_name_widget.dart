@@ -42,7 +42,7 @@ class WeaponsNameWidget extends ConsumerWidget {
           color: Colors.white10,
         );
       case WeaponsNamePlatformType.web:
-        return TextStyle(
+        return GoogleFonts.zillaSlab(
           fontSize: context.screenWidth * 0.04,
           fontWeight: FontWeight.bold,
           color: Colors.white,

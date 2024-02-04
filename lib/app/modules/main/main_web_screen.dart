@@ -47,7 +47,7 @@ class _MainWebScreenState extends ConsumerState<MainWebScreen> {
       backgroundColor: Colors.blueGrey.shade900,
       body: Stack(
         children: [
-          if (widget.navigationShell.currentIndex == 0)
+          if (widget.navigationShell.currentIndex != 2)
             maps.when(
               data: (maps) {
                 return Opacity(

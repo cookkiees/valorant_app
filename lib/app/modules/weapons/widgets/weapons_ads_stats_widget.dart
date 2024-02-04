@@ -95,7 +95,7 @@ class WeaponsAdsStatsWidget extends ConsumerWidget {
       case WeaponsAdsStatsPlatformType.web:
         return const TextStyle(
           fontSize: 14,
-          color: Colors.blueGrey,
+          color: Colors.white54,
         );
       default:
         return const TextStyle();
