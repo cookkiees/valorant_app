@@ -7,6 +7,7 @@ import 'package:valorant_app/app/modules/weapons/widgets/weapons_name_widget.dar
 
 import '../widgets/weapons_category_widget.dart';
 import '../widgets/weapons_model_widget.dart';
+import '../widgets/weapons_skins_widget.dart';
 import '../widgets/weapons_stats_widget.dart';
 
 class WeaponsScreen extends ConsumerWidget {
@@ -144,7 +145,11 @@ class WeaponsDesktopWidget extends ConsumerWidget {
               ),
             ),
           ),
-          const Flexible(child: SizedBox())
+          const Flexible(
+            child: SizedBox(
+              child: WeaponsSkinsWidget(),
+            ),
+          )
         ],
       ),
     );

@@ -50,6 +50,7 @@ dependencies:
   riverpod: ^2.4.9
   mockito: ^5.4.4
   google_fonts: ^6.1.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
