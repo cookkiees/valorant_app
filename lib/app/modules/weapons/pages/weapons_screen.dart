@@ -7,6 +7,7 @@ import 'package:valorant_app/app/modules/weapons/widgets/weapons_name_widget.dar
 
 import '../widgets/weapons_category_widget.dart';
 import '../widgets/weapons_model_widget.dart';
+import '../widgets/weapons_stats_widget.dart';
 
 class WeaponsScreen extends ConsumerWidget {
   const WeaponsScreen({super.key});
@@ -119,32 +120,15 @@ class WeaponsDesktopWidget extends ConsumerWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        '// ROLE',
+                                        'WEAPONS STATS',
                                         style: TextStyle(
+                                          fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                         ),
                                       ),
                                       16.height,
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Flexible(
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: context.screenWidth * 0.03,
-                                    vertical: 24,
-                                  ),
-                                  child: const Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '// BIORAPHY',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
+                                      const WeaponsStatsWidget(
+                                        type: WeaponsStatsPlatformType.web,
                                       ),
                                     ],
                                   ),
