@@ -47,32 +47,33 @@ class _MainWebScreenState extends ConsumerState<MainWebScreen> {
       backgroundColor: Colors.blueGrey.shade900,
       body: Stack(
         children: [
-          maps.when(
-            data: (maps) {
-              return Opacity(
-                opacity: 0.3,
-                child: AnimatedContainer(
-                  duration: const Duration(seconds: 2),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      opacity: 0,
-                      colorFilter: const ColorFilter.mode(
-                        Colors.grey,
-                        BlendMode.saturation,
+          if (widget.navigationShell.currentIndex == 0)
+            maps.when(
+              data: (maps) {
+                return Opacity(
+                  opacity: 0.3,
+                  child: AnimatedContainer(
+                    duration: const Duration(seconds: 2),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        opacity: 0,
+                        colorFilter: const ColorFilter.mode(
+                          Colors.grey,
+                          BlendMode.saturation,
+                        ),
+                        image: NetworkImage(maps.data![currentIndex].splash!),
                       ),
-                      image: NetworkImage(maps.data![currentIndex].splash!),
                     ),
                   ),
-                ),
-              );
-            },
-            error: (error, stackTrace) {
-              return Text(error.toString());
-            },
-            loading: () => const CircularProgressIndicator.adaptive(),
-          ),
+                );
+              },
+              error: (error, stackTrace) {
+                return Text(error.toString());
+              },
+              loading: () => const CircularProgressIndicator.adaptive(),
+            ),
           FadeIn(
             delay: const Duration(milliseconds: 650),
             child: CustomPaint(

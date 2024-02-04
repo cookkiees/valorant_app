@@ -45,15 +45,6 @@ class AgentAbilitiesWidget extends ConsumerWidget {
                   border: Border.all(
                     color: Colors.white38,
                   ),
-                  // gradient: LinearGradient(
-                  //   colors: [
-                  //     Color(colorValue),
-                  //     Colors.transparent,
-                  //   ],
-                  //   begin: Alignment.bottomCenter,
-                  //   end: Alignment.topCenter,
-                  //   stops: const [0.0, 1.0],
-                  // ),
                 ),
               );
             },

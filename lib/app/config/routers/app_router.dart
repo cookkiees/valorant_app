@@ -5,12 +5,13 @@ import 'package:valorant_app/app/modules/agent/pages/agent_screen.dart';
 
 import '../../modules/main/main_mobile_screen.dart';
 import '../../modules/main/main_web_screen.dart';
+import '../../modules/weapons/pages/weapons_screen.dart';
 import 'app_routes.dart';
 
 mixin class AppRouter {
   static GoRouter routerWeb() {
     return GoRouter(
-      initialLocation: AppRoutes.agent.path,
+      initialLocation: AppRoutes.weapons.path,
       routes: [
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) {
@@ -57,7 +58,7 @@ mixin class AppRouter {
           GoRoute(
             name: AppRoutes.weapons.name,
             path: AppRoutes.weapons.path,
-            builder: (context, state) => const Center(child: Text('WEAPONS')),
+            builder: (context, state) => const WeaponsScreen(),
           ),
         ],
       ),

@@ -7,7 +7,7 @@ import 'app/config/themes/app_theme.dart';
 
 void main() async {
   // GoRouter.optionURLReflectsImperativeAPIs = true;
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   try {
     // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
     //   .then((value) => AppLogger.logInfo("Connected Firebase"))
