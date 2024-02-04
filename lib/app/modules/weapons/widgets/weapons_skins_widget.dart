@@ -15,10 +15,12 @@ class WeaponsSkinsWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final weapons = ref.watch(weaponsProvider);
     final selectedWeaponsId = ref.watch(selectedWeaponsIdProvider);
+    final carouselController = ref.read(carouselControllerProvider);
 
     return weapons.when(
       data: (models) {
         return CarouselSlider.builder(
+          carouselController: carouselController,
           itemCount: models.data?[selectedWeaponsId].skins?.length ?? 0,
           itemBuilder: (context, index, realIndex) {
             var skins = models.data?[selectedWeaponsId].skins?[index];
@@ -37,7 +39,6 @@ class WeaponsSkinsWidget extends ConsumerWidget {
             );
           },
           options: CarouselOptions(
-            height: double.infinity,
             scrollDirection: Axis.horizontal,
             enlargeCenterPage: true,
             autoPlay: false, // Set to true if you want auto-play

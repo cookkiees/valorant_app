@@ -119,7 +119,7 @@ class WeaponsModelWidget extends ConsumerWidget {
       case WeaponsModelPlatformType.mobile:
         return const EdgeInsets.only(bottom: kBottomNavigationBarHeight + 20);
       case WeaponsModelPlatformType.web:
-        return const EdgeInsets.only(top: 40);
+        return const EdgeInsets.only(top: 52, left: 8);
       default:
         return EdgeInsets.zero;
     }

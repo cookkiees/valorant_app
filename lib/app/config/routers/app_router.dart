@@ -30,7 +30,7 @@ mixin class AppRouter {
 
   static GoRouter routerMobile() {
     return GoRouter(
-      initialLocation: AppRoutes.agent.path,
+      initialLocation: AppRoutes.weapons.path,
       routes: [
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) {
