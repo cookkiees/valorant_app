@@ -4,10 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers/state/state_provider.dart';
 import '../../../core/providers/weapons/weapons_provider.dart';
 
-final carouselControllerProvider = Provider<CarouselController>((ref) {
-  return CarouselController();
-});
-
 class WeaponsSkinsWidget extends ConsumerWidget {
   const WeaponsSkinsWidget({super.key});
 
@@ -39,6 +35,7 @@ class WeaponsSkinsWidget extends ConsumerWidget {
             );
           },
           options: CarouselOptions(
+            scrollPhysics: const NeverScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             enlargeCenterPage: true,
             autoPlay: false, // Set to true if you want auto-play

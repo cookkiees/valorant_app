@@ -106,7 +106,7 @@ class WeaponsModelWidget extends ConsumerWidget {
   double? get getWidth {
     switch (type) {
       case WeaponsModelPlatformType.mobile:
-        return 100;
+        return 200;
       case WeaponsModelPlatformType.web:
         return 300;
       default:
